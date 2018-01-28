@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--
+生成mapper命令
+java -jar mybatis.jar -configfile mybatis-more.xml -overwrite
+-->
+<generatorConfiguration>
+    <classPathEntry location="mysql-connector-java-5.1.38.jar" />
+    <context id="appInfo" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 生成一对一配置 -->
+        <plugin type="cc.bandaotixi.plugins.OneToOnePlugin"></plugin>
+        <!-- 生成一对多配置 -->
+        <plugin type="cc.bandaotixi.plugins.OneToManyPlugin"></plugin>
+
+        <!--批量插入和批量更新-->
+        <!--<plugin type="cc.bandaotixi.plugins.BatchInsertPlugin"></plugin>
+        <plugin type="cc.bandaotixi.plugins.BatchUpdatePlugin"></plugin>-->
+
+        <commentGenerator type="cc.bandaotixi.plugins.BDTCommentGenerator">
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!--去除注释  -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/shiro?characterEncoding=utf-8"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+        <!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建  使用Maven生成在target目录下，会自动创建） -->
+        <javaModelGenerator targetPackage="vip.ipav.shiro.po" targetProject="../src/main/java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--生成XMLMAPPER文件 -->
+        <sqlMapGenerator targetPackage="vip.ipav.shiro.dao" targetProject="../src/main/resources">
+            <property name="enableSubPackages" value="false" />
+            <property name="isMergeable" value="false"/>
+        </sqlMapGenerator>
+
+        <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现  context id="DB2Tables" 修改targetRuntime="MyBatis3"  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.ipav.shiro.dao" targetProject="../src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等，自增-->
+        <!--一对多映射，里面可以添加额外条件where="user.other=0" -->
+        <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>
+            <oneToMany mappingTable="user_roles" column="id" joinColumn="user_id" />
+        </table>
+
+        <!--关系表-->
+        <table tableName="user_roles" domainObjectName="UserRole">
+            <oneToOne mappingTable="user" column="user_id" joinColumn="id" />
+            <oneToOne mappingTable="roles" column="roles_id" joinColumn="id" />
+        </table>
+
+        <table tableName="roles" domainObjectName="Role">
+            <generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>
+            <oneToMany mappingTable="user_roles" column="id" joinColumn="roles_id"/>
+            <oneToMany mappingTable="roles_permissions" column="id" joinColumn="roles_id"/>
+        </table>
+
+        <table tableName="roles_permissions" domainObjectName="RolePermission">
+            <oneToOne mappingTable="roles" column="roles_id" joinColumn="id" />
+            <oneToOne mappingTable="permissions" column="permissions_id" joinColumn="id" />
+        </table>
+
+        <table tableName="permissions" domainObjectName="Permission">
+            <generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/>
+            <oneToMany mappingTable="roles_permissions" column="id" joinColumn="permissions_id"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

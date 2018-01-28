@@ -8,25 +8,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-    <context:component-scan base-package="vip.ipav.shiro">
-        <context:exclude-filter type="annotation"
-                                expression="org.springframework.stereotype.Controller" />
-        <context:exclude-filter type="annotation"
-                                expression="org.springframework.web.bind.annotation.ControllerAdvice" />
-        <context:exclude-filter type="annotation"
-                                expression="org.springframework.web.bind.annotation.RestController" />
-        <context:exclude-filter type="annotation"
-                                expression="org.springframework.web.bind.annotation.RestControllerAdvice" />
-    </context:component-scan>
-
     <!-- 注入自定义realm -->
     <bean id="myShiroRealm" class="vip.ipav.shiro.realm.MyShiroRealm" />
-
     <!-- 安全管理器 ：必须注入-->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="myShiroRealm"></property>
     </bean>
-
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login"/><!-- 如果不写的话，默认去找login.jsp页面 -->
@@ -44,5 +31,17 @@
                 /** = authc <!-- 表示其他的所有路径都要通过认证后才能访问 -->
             </value>
         </property>
+    </bean>
+
+    <!--下面配置到MVC文件里，可以到Controller注解里面进行AOP控制，放到beans文件里，可以到Service类里AOP控制-->
+    <!-- Shiro生命周期处理器-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+    <!-- AOP式方法级权限检查 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
     </bean>
 </beans>

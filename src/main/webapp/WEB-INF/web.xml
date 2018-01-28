@@ -7,9 +7,8 @@
   <!-- 配置启动 Spring IOC 容器的 Listener -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:beans.xml</param-value>
+    <param-value>classpath:ApplicationContext.xml</param-value>
   </context-param>
-
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -19,11 +18,10 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:springmvc.xml</param-value>
+      <param-value>classpath:spring-mvc.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>springDispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
@@ -37,7 +35,6 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
-
   <filter-mapping>
     <filter-name>shiroFilter</filter-name>
     <url-pattern>/*</url-pattern>
