@@ -1,10 +1,10 @@
-package vip.ipav.shiro.po;
+package vip.ipav.shiro.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserRoleExample {
+public class RolePermissionExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -12,14 +12,14 @@ public class UserRoleExample {
     protected List<Criteria> oredCriteria;
 
     /**
-     *  构造查询条件,user_roles
+     *  构造查询条件,roles_permissions
      */
-    public UserRoleExample() {
+    public RolePermissionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
     /**
-     *  设置排序字段,user_roles
+     *  设置排序字段,roles_permissions
      *
      * @param orderByClause 排序字段
      */
@@ -28,14 +28,14 @@ public class UserRoleExample {
     }
 
     /**
-     *  获取排序字段,user_roles
+     *  获取排序字段,roles_permissions
      */
     public String getOrderByClause() {
         return orderByClause;
     }
 
     /**
-     *  设置过滤重复数据,user_roles
+     *  设置过滤重复数据,roles_permissions
      *
      * @param distinct 是否过滤重复数据
      */
@@ -44,21 +44,21 @@ public class UserRoleExample {
     }
 
     /**
-     *  是否过滤重复数据,user_roles
+     *  是否过滤重复数据,roles_permissions
      */
     public boolean isDistinct() {
         return distinct;
     }
 
     /**
-     *  获取当前的查询条件实例,user_roles
+     *  获取当前的查询条件实例,roles_permissions
      */
     public List<Criteria> getOredCriteria() {
         return oredCriteria;
     }
 
     /**
-     * ,user_roles
+     * ,roles_permissions
      *
      * @param criteria 过滤条件实例
      */
@@ -67,7 +67,7 @@ public class UserRoleExample {
     }
 
     /**
-     * ,user_roles
+     * ,roles_permissions
      */
     public Criteria or() {
         Criteria criteria = createCriteriaInternal();
@@ -76,7 +76,7 @@ public class UserRoleExample {
     }
 
     /**
-     *  创建一个查询条件,user_roles
+     *  创建一个查询条件,roles_permissions
      */
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
@@ -87,7 +87,7 @@ public class UserRoleExample {
     }
 
     /**
-     *  内部构建查询条件对象,user_roles
+     *  内部构建查询条件对象,roles_permissions
      */
     protected Criteria createCriteriaInternal() {
         Criteria criteria = new Criteria();
@@ -95,7 +95,7 @@ public class UserRoleExample {
     }
 
     /**
-     *  清除查询条件,user_roles
+     *  清除查询条件,roles_permissions
      */
     public void clear() {
         oredCriteria.clear();
@@ -106,7 +106,7 @@ public class UserRoleExample {
     /**
      * 
      * GeneratedCriteria
-     * 数据库表：user_roles
+     * 数据库表：roles_permissions
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -149,63 +149,63 @@ public class UserRoleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andIdEqualTo(Long value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andIdNotEqualTo(Long value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andIdGreaterThan(Long value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andIdLessThan(Long value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andIdLessThanOrEqualTo(Long value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andIdIn(List<Long> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andIdNotIn(List<Long> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andIdBetween(Long value1, Long value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andIdNotBetween(Long value1, Long value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
@@ -266,6 +266,66 @@ public class UserRoleExample {
 
         public Criteria andRolesIdNotBetween(Long value1, Long value2) {
             addCriterion("roles_id not between", value1, value2, "rolesId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdIsNull() {
+            addCriterion("permissions_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdIsNotNull() {
+            addCriterion("permissions_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdEqualTo(Long value) {
+            addCriterion("permissions_id =", value, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdNotEqualTo(Long value) {
+            addCriterion("permissions_id <>", value, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdGreaterThan(Long value) {
+            addCriterion("permissions_id >", value, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("permissions_id >=", value, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdLessThan(Long value) {
+            addCriterion("permissions_id <", value, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdLessThanOrEqualTo(Long value) {
+            addCriterion("permissions_id <=", value, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdIn(List<Long> values) {
+            addCriterion("permissions_id in", values, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdNotIn(List<Long> values) {
+            addCriterion("permissions_id not in", values, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdBetween(Long value1, Long value2) {
+            addCriterion("permissions_id between", value1, value2, "permissionsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionsIdNotBetween(Long value1, Long value2) {
+            addCriterion("permissions_id not between", value1, value2, "permissionsId");
             return (Criteria) this;
         }
 
@@ -403,7 +463,7 @@ public class UserRoleExample {
     /**
      * 类注释
      * Criteria
-     * 数据库表：user_roles
+     * 数据库表：roles_permissions
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -415,7 +475,7 @@ public class UserRoleExample {
     /**
      * 
      * Criterion
-     * 数据库表：user_roles
+     * 数据库表：roles_permissions
      */
     public static class Criterion {
         private String condition;

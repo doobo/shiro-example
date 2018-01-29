@@ -13,7 +13,33 @@
     <!-- 安全管理器 ：必须注入-->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="myShiroRealm"></property>
+        <!--shiro-redis配置-->
+        <property name="sessionManager" ref="sessionManager" />
+        <property name="cacheManager" ref="cacheManager" />
     </bean>
+    <!-- shiro redisManager -->
+    <!--https://github.com/alexxiyang/shiro-redis-->
+    <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
+        <property name="host" value="192.168.1.110"/>
+        <property name="port" value="6379"/>
+        <property name="expire" value="1800"/>
+        <property name="timeout" value="10000"/>
+        <property name="password" value="doobo"/>
+        <property name="database" value="0"/>
+    </bean>
+    <!-- redisSessionDAO -->
+    <bean id="redisSessionDAO" class="org.crazycake.shiro.RedisSessionDAO">
+        <property name="redisManager" ref="redisManager" />
+    </bean>
+    <!-- sessionManager -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="redisSessionDAO" />
+    </bean>
+    <!-- cacheManager -->
+    <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
+        <property name="redisManager" ref="redisManager" />
+    </bean>
+
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login"/><!-- 如果不写的话，默认去找login.jsp页面 -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="vip.ipav.shiro.dao.PermissionMapper">
-  <resultMap id="BaseResultMap" type="vip.ipav.shiro.po.Permission">
+  <resultMap id="BaseResultMap" type="vip.ipav.shiro.pojo.Permission">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="execute" jdbcType="VARCHAR" property="execute" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     id, execute, description, other
   </sql>
-  <select id="selectByExample" parameterType="vip.ipav.shiro.po.PermissionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="vip.ipav.shiro.pojo.PermissionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -93,13 +93,13 @@
     delete from permissions
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="vip.ipav.shiro.po.PermissionExample">
+  <delete id="deleteByExample" parameterType="vip.ipav.shiro.pojo.PermissionExample">
     delete from permissions
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="vip.ipav.shiro.po.Permission">
+  <insert id="insert" parameterType="vip.ipav.shiro.pojo.Permission">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -108,7 +108,7 @@
     values (#{execute,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="vip.ipav.shiro.po.Permission">
+  <insert id="insertSelective" parameterType="vip.ipav.shiro.pojo.Permission">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="vip.ipav.shiro.po.PermissionExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="vip.ipav.shiro.pojo.PermissionExample" resultType="java.lang.Long">
     select count(*) from permissions
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -172,7 +172,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="vip.ipav.shiro.po.Permission">
+  <update id="updateByPrimaryKeySelective" parameterType="vip.ipav.shiro.pojo.Permission">
     update permissions
     <set>
       <if test="execute != null">
@@ -187,7 +187,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="vip.ipav.shiro.po.Permission">
+  <update id="updateByPrimaryKey" parameterType="vip.ipav.shiro.pojo.Permission">
     update permissions
     set execute = #{execute,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
@@ -195,6 +195,6 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="getRolePermissions" resultMap="vip.ipav.shiro.dao.RolePermissionMapper.BaseResultMap">
-    select roles_id,permissions_id,create_time,next from roles_permissions where permissions_id=#{id} 
+    select id,roles_id,permissions_id,create_time,next from roles_permissions where permissions_id=#{id} 
   </select>
 </mapper>

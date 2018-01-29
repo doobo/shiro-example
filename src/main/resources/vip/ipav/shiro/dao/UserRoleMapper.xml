@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="vip.ipav.shiro.dao.UserRoleMapper">
-  <resultMap id="BaseResultMap" type="vip.ipav.shiro.po.UserRole">
+  <resultMap id="BaseResultMap" type="vip.ipav.shiro.pojo.UserRole">
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="roles_id" jdbcType="BIGINT" property="rolesId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -68,9 +69,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, roles_id, create_time, next
+    id, user_id, roles_id, create_time, next
   </sql>
-  <select id="selectByExample" parameterType="vip.ipav.shiro.po.UserRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="vip.ipav.shiro.pojo.UserRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -84,19 +85,35 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="vip.ipav.shiro.po.UserRoleExample">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_roles
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_roles
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="vip.ipav.shiro.pojo.UserRoleExample">
     delete from user_roles
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="vip.ipav.shiro.po.UserRole">
+  <insert id="insert" parameterType="vip.ipav.shiro.pojo.UserRole">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into user_roles (user_id, roles_id, create_time, 
       next)
     values (#{userId,jdbcType=BIGINT}, #{rolesId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
       #{next,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="vip.ipav.shiro.po.UserRole">
+  <insert id="insertSelective" parameterType="vip.ipav.shiro.pojo.UserRole">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into user_roles
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -127,7 +144,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="vip.ipav.shiro.po.UserRoleExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="vip.ipav.shiro.pojo.UserRoleExample" resultType="java.lang.Long">
     select count(*) from user_roles
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -136,6 +153,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user_roles
     <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
@@ -155,13 +175,40 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user_roles
-    set user_id = #{record.userId,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
       roles_id = #{record.rolesId,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       next = #{record.next,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="vip.ipav.shiro.pojo.UserRole">
+    update user_roles
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="rolesId != null">
+        roles_id = #{rolesId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="next != null">
+        next = #{next,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="vip.ipav.shiro.pojo.UserRole">
+    update user_roles
+    set user_id = #{userId,jdbcType=BIGINT},
+      roles_id = #{rolesId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      next = #{next,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="getUser" resultMap="vip.ipav.shiro.dao.UserMapper.BaseResultMap">
     select id,username,password,create_time,other from user where id=#{userId}

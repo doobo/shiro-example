@@ -1,10 +1,9 @@
-package vip.ipav.shiro.po;
+package vip.ipav.shiro.pojo;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class RolePermissionExample {
+public class RoleExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -12,14 +11,14 @@ public class RolePermissionExample {
     protected List<Criteria> oredCriteria;
 
     /**
-     *  构造查询条件,roles_permissions
+     *  构造查询条件,roles
      */
-    public RolePermissionExample() {
+    public RoleExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
     /**
-     *  设置排序字段,roles_permissions
+     *  设置排序字段,roles
      *
      * @param orderByClause 排序字段
      */
@@ -28,14 +27,14 @@ public class RolePermissionExample {
     }
 
     /**
-     *  获取排序字段,roles_permissions
+     *  获取排序字段,roles
      */
     public String getOrderByClause() {
         return orderByClause;
     }
 
     /**
-     *  设置过滤重复数据,roles_permissions
+     *  设置过滤重复数据,roles
      *
      * @param distinct 是否过滤重复数据
      */
@@ -44,21 +43,21 @@ public class RolePermissionExample {
     }
 
     /**
-     *  是否过滤重复数据,roles_permissions
+     *  是否过滤重复数据,roles
      */
     public boolean isDistinct() {
         return distinct;
     }
 
     /**
-     *  获取当前的查询条件实例,roles_permissions
+     *  获取当前的查询条件实例,roles
      */
     public List<Criteria> getOredCriteria() {
         return oredCriteria;
     }
 
     /**
-     * ,roles_permissions
+     * ,roles
      *
      * @param criteria 过滤条件实例
      */
@@ -67,7 +66,7 @@ public class RolePermissionExample {
     }
 
     /**
-     * ,roles_permissions
+     * ,roles
      */
     public Criteria or() {
         Criteria criteria = createCriteriaInternal();
@@ -76,7 +75,7 @@ public class RolePermissionExample {
     }
 
     /**
-     *  创建一个查询条件,roles_permissions
+     *  创建一个查询条件,roles
      */
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
@@ -87,7 +86,7 @@ public class RolePermissionExample {
     }
 
     /**
-     *  内部构建查询条件对象,roles_permissions
+     *  内部构建查询条件对象,roles
      */
     protected Criteria createCriteriaInternal() {
         Criteria criteria = new Criteria();
@@ -95,7 +94,7 @@ public class RolePermissionExample {
     }
 
     /**
-     *  清除查询条件,roles_permissions
+     *  清除查询条件,roles
      */
     public void clear() {
         oredCriteria.clear();
@@ -106,7 +105,7 @@ public class RolePermissionExample {
     /**
      * 
      * GeneratedCriteria
-     * 数据库表：roles_permissions
+     * 数据库表：roles
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -149,183 +148,203 @@ public class RolePermissionExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andRolesIdIsNull() {
-            addCriterion("roles_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdIsNotNull() {
-            addCriterion("roles_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdEqualTo(Long value) {
-            addCriterion("roles_id =", value, "rolesId");
+        public Criteria andIdEqualTo(Long value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdNotEqualTo(Long value) {
-            addCriterion("roles_id <>", value, "rolesId");
+        public Criteria andIdNotEqualTo(Long value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdGreaterThan(Long value) {
-            addCriterion("roles_id >", value, "rolesId");
+        public Criteria andIdGreaterThan(Long value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("roles_id >=", value, "rolesId");
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdLessThan(Long value) {
-            addCriterion("roles_id <", value, "rolesId");
+        public Criteria andIdLessThan(Long value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdLessThanOrEqualTo(Long value) {
-            addCriterion("roles_id <=", value, "rolesId");
+        public Criteria andIdLessThanOrEqualTo(Long value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdIn(List<Long> values) {
-            addCriterion("roles_id in", values, "rolesId");
+        public Criteria andIdIn(List<Long> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdNotIn(List<Long> values) {
-            addCriterion("roles_id not in", values, "rolesId");
+        public Criteria andIdNotIn(List<Long> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdBetween(Long value1, Long value2) {
-            addCriterion("roles_id between", value1, value2, "rolesId");
+        public Criteria andIdBetween(Long value1, Long value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andRolesIdNotBetween(Long value1, Long value2) {
-            addCriterion("roles_id not between", value1, value2, "rolesId");
+        public Criteria andIdNotBetween(Long value1, Long value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdIsNull() {
-            addCriterion("permissions_id is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdIsNotNull() {
-            addCriterion("permissions_id is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdEqualTo(Long value) {
-            addCriterion("permissions_id =", value, "permissionsId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdNotEqualTo(Long value) {
-            addCriterion("permissions_id <>", value, "permissionsId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdGreaterThan(Long value) {
-            addCriterion("permissions_id >", value, "permissionsId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("permissions_id >=", value, "permissionsId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdLessThan(Long value) {
-            addCriterion("permissions_id <", value, "permissionsId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdLessThanOrEqualTo(Long value) {
-            addCriterion("permissions_id <=", value, "permissionsId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdIn(List<Long> values) {
-            addCriterion("permissions_id in", values, "permissionsId");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdNotIn(List<Long> values) {
-            addCriterion("permissions_id not in", values, "permissionsId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdBetween(Long value1, Long value2) {
-            addCriterion("permissions_id between", value1, value2, "permissionsId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionsIdNotBetween(Long value1, Long value2) {
-            addCriterion("permissions_id not between", value1, value2, "permissionsId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("create_time is null");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("create_time is not null");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("create_time =", value, "createTime");
+        public Criteria andCodeIsNull() {
+            addCriterion("code is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("create_time <>", value, "createTime");
+        public Criteria andCodeIsNotNull() {
+            addCriterion("code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("create_time >", value, "createTime");
+        public Criteria andCodeEqualTo(String value) {
+            addCriterion("code =", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("create_time >=", value, "createTime");
+        public Criteria andCodeNotEqualTo(String value) {
+            addCriterion("code <>", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("create_time <", value, "createTime");
+        public Criteria andCodeGreaterThan(String value) {
+            addCriterion("code >", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("create_time <=", value, "createTime");
+        public Criteria andCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("code >=", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("create_time in", values, "createTime");
+        public Criteria andCodeLessThan(String value) {
+            addCriterion("code <", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("create_time not in", values, "createTime");
+        public Criteria andCodeLessThanOrEqualTo(String value) {
+            addCriterion("code <=", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
+        public Criteria andCodeLike(String value) {
+            addCriterion("code like", value, "code");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("create_time not between", value1, value2, "createTime");
+        public Criteria andCodeNotLike(String value) {
+            addCriterion("code not like", value, "code");
+            return (Criteria) this;
+        }
+
+        public Criteria andCodeIn(List<String> values) {
+            addCriterion("code in", values, "code");
+            return (Criteria) this;
+        }
+
+        public Criteria andCodeNotIn(List<String> values) {
+            addCriterion("code not in", values, "code");
+            return (Criteria) this;
+        }
+
+        public Criteria andCodeBetween(String value1, String value2) {
+            addCriterion("code between", value1, value2, "code");
+            return (Criteria) this;
+        }
+
+        public Criteria andCodeNotBetween(String value1, String value2) {
+            addCriterion("code not between", value1, value2, "code");
             return (Criteria) this;
         }
 
@@ -403,7 +422,7 @@ public class RolePermissionExample {
     /**
      * 类注释
      * Criteria
-     * 数据库表：roles_permissions
+     * 数据库表：roles
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -415,7 +434,7 @@ public class RolePermissionExample {
     /**
      * 
      * Criterion
-     * 数据库表：roles_permissions
+     * 数据库表：roles
      */
     public static class Criterion {
         private String condition;

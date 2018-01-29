@@ -1,4 +1,4 @@
-package vip.ipav.shiro.po;
+package vip.ipav.shiro.pojo;
 
 import java.util.Date;
 import java.util.List;
@@ -132,17 +132,5 @@ public class User {
 
     public void setUserRoles(List<UserRole> userRoles) {
         this.userRoles=userRoles;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", createTime=" + createTime +
-                ", other='" + other + '\'' +
-                ", userRoles=" + userRoles +
-                '}';
     }
 }

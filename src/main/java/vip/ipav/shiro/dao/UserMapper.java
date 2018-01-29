@@ -1,10 +1,11 @@
 package vip.ipav.shiro.dao;
 
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-import vip.ipav.shiro.po.User;
-import vip.ipav.shiro.po.UserExample;
+import vip.ipav.shiro.pojo.User;
+import vip.ipav.shiro.pojo.UserExample;
+
+import java.util.List;
 @Component
 public interface UserMapper {
     /**

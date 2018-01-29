@@ -1,8 +1,14 @@
-package vip.ipav.shiro.po;
+package vip.ipav.shiro.pojo;
 
 import java.util.Date;
 
 public class RolePermission {
+    /**
+     * 
+     * 表字段 : roles_permissions.id
+     */
+    private Long id;
+
     /**
      * 
      * 表字段 : roles_permissions.roles_id
@@ -30,6 +36,24 @@ public class RolePermission {
     private Role role;
 
     private Permission permission;
+
+    /**
+     * 获取  字段:roles_permissions.id
+     *
+     * @return roles_permissions.id, 
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * 设置  字段:roles_permissions.id
+     *
+     * @param id the value for roles_permissions.id, 
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * 获取  字段:roles_permissions.roles_id
@@ -117,16 +141,5 @@ public class RolePermission {
 
     public void setPermission(Permission permission) {
         this.permission=permission;
-    }
-
-    @Override
-    public String toString() {
-        return "RolePermission{" +
-                "rolesId=" + rolesId +
-                ", permissionsId=" + permissionsId +
-                ", createTime=" + createTime +
-                ", next='" + next + '\'' +
-                ", permission=" + permission +
-                '}';
     }
 }

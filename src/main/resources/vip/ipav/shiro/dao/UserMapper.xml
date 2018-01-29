@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="vip.ipav.shiro.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="vip.ipav.shiro.po.User">
+  <resultMap id="BaseResultMap" type="vip.ipav.shiro.pojo.User">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     id, username, password, create_time, other
   </sql>
-  <select id="selectByExample" parameterType="vip.ipav.shiro.po.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="vip.ipav.shiro.pojo.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="vip.ipav.shiro.po.UserExample">
+  <delete id="deleteByExample" parameterType="vip.ipav.shiro.pojo.UserExample">
     delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="vip.ipav.shiro.po.User">
+  <insert id="insert" parameterType="vip.ipav.shiro.pojo.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -109,7 +109,7 @@
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{other,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="vip.ipav.shiro.po.User">
+  <insert id="insertSelective" parameterType="vip.ipav.shiro.pojo.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="vip.ipav.shiro.po.UserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="vip.ipav.shiro.pojo.UserExample" resultType="java.lang.Long">
     select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -183,7 +183,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="vip.ipav.shiro.po.User">
+  <update id="updateByPrimaryKeySelective" parameterType="vip.ipav.shiro.pojo.User">
     update user
     <set>
       <if test="username != null">
@@ -201,7 +201,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="vip.ipav.shiro.po.User">
+  <update id="updateByPrimaryKey" parameterType="vip.ipav.shiro.pojo.User">
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -210,6 +210,6 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="getUserRoles" resultMap="vip.ipav.shiro.dao.UserRoleMapper.BaseResultMap">
-    select user_id,roles_id,create_time,next from user_roles where user_id=#{id} 
+    select id,user_id,roles_id,create_time,next from user_roles where user_id=#{id} 
   </select>
 </mapper>

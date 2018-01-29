@@ -5,7 +5,7 @@
 <configuration>
     <typeAliases>
         <!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） -->
-        <package name="vip.ipav.shiro.po"/>
+        <package name="vip.ipav.shiro.pojo"/>
     </typeAliases>
     <mappers>
         <package name="vip.ipav.shiro.dao"/>

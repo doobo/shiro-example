@@ -8,6 +8,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,20 +35,21 @@ public class IndexController {
         return "write";
     }
 
-    @GetMapping("/roles")
+    @RequestMapping("/roles")
     public String setRoles(HttpServletRequest request, HttpServletResponse response)
             throws ServletException,IOException{
         //获取Token
         String error = null;
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("doobo", "password");
+        UsernamePasswordToken token = new UsernamePasswordToken(request.getParameter("username"),
+                request.getParameter("password"));
         token.setRememberMe(false);
         try {
             subject.login(token);
         } catch (UnknownAccountException e) {
-            error = "用户名/密码错误";
+            error = "用户名/密码错误1";
         } catch (IncorrectCredentialsException e) {
-            error = "用户名/密码错误";
+            error = "用户名/密码错误2";
         } catch (AuthenticationException e) {
             //其他错误，比如锁定，如果想单独处理请单独catch处理
             error = "其他错误：" + e.getMessage();

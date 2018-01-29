@@ -1,8 +1,14 @@
-package vip.ipav.shiro.po;
+package vip.ipav.shiro.pojo;
 
 import java.util.Date;
 
 public class UserRole {
+    /**
+     * 
+     * 表字段 : user_roles.id
+     */
+    private Long id;
+
     /**
      * 
      * 表字段 : user_roles.user_id
@@ -30,6 +36,24 @@ public class UserRole {
     private User user;
 
     private Role role;
+
+    /**
+     * 获取  字段:user_roles.id
+     *
+     * @return user_roles.id, 
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * 设置  字段:user_roles.id
+     *
+     * @param id the value for user_roles.id, 
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * 获取  字段:user_roles.user_id
@@ -117,16 +141,5 @@ public class UserRole {
 
     public void setRole(Role role) {
         this.role=role;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRole{" +
-                "userId=" + userId +
-                ", rolesId=" + rolesId +
-                ", createTime=" + createTime +
-                ", next='" + next + '\'' +
-                ", role=" + role +
-                '}';
     }
 }

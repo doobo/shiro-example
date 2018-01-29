@@ -3,8 +3,8 @@ package vip.ipav.shiro.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-import vip.ipav.shiro.po.UserRole;
-import vip.ipav.shiro.po.UserRoleExample;
+import vip.ipav.shiro.pojo.UserRole;
+import vip.ipav.shiro.pojo.UserRoleExample;
 @Component
 public interface UserRoleMapper {
     /**
@@ -20,6 +20,13 @@ public interface UserRoleMapper {
      * @param example
      */
     int deleteByExample(UserRoleExample example);
+
+    /**
+     *  根据主键删除数据库的记录,user_roles
+     *
+     * @param id
+     */
+    int deleteByPrimaryKey(Long id);
 
     /**
      *  新写入数据库记录,user_roles
@@ -43,6 +50,13 @@ public interface UserRoleMapper {
     List<UserRole> selectByExample(UserRoleExample example);
 
     /**
+     *  根据指定主键获取一条数据库记录,user_roles
+     *
+     * @param id
+     */
+    UserRole selectByPrimaryKey(Long id);
+
+    /**
      *  动态根据指定的条件来更新符合条件的数据库记录,user_roles
      *
      * @param record
@@ -57,4 +71,18 @@ public interface UserRoleMapper {
      * @param example
      */
     int updateByExample(@Param("record") UserRole record, @Param("example") UserRoleExample example);
+
+    /**
+     *  动态字段,根据主键来更新符合条件的数据库记录,user_roles
+     *
+     * @param record
+     */
+    int updateByPrimaryKeySelective(UserRole record);
+
+    /**
+     *  根据主键来更新符合条件的数据库记录,user_roles
+     *
+     * @param record
+     */
+    int updateByPrimaryKey(UserRole record);
 }

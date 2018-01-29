@@ -3,8 +3,8 @@ package vip.ipav.shiro.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-import vip.ipav.shiro.po.Role;
-import vip.ipav.shiro.po.RoleExample;
+import vip.ipav.shiro.pojo.Role;
+import vip.ipav.shiro.pojo.RoleExample;
 @Component
 public interface RoleMapper {
     /**

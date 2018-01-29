@@ -1,4 +1,4 @@
-package vip.ipav.shiro.po;
+package vip.ipav.shiro.pojo;
 
 import java.util.List;
 
@@ -117,16 +117,5 @@ public class Role {
 
     public void setRolePermissions(List<RolePermission> rolePermissions) {
         this.rolePermissions=rolePermissions;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", code='" + code + '\'' +
-                ", next='" + next + '\'' +
-                ", rolePermissions=" + rolePermissions +
-                '}';
     }
 }

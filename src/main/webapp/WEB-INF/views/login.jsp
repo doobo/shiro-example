@@ -1,10 +1,17 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Login Page</title>
 </head>
 <body>
-<h1 align="center">This is Login Page</h1>
-<a align="center" href="/roles">登录</a>
+<h1>login page</h1>
+<form action="roles" method="post">
+    <label>User Name</label> <input tyep="text" name="username" maxLength="40" />
+    <label>Password</label><input type="password" name="password" />
+    <input type="submit" value="login" />
+</form>
 </body>
 </html>
