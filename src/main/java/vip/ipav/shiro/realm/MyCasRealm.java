@@ -1,12 +1,9 @@
 package vip.ipav.shiro.realm;
 
-import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.cas.CasRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import vip.ipav.shiro.dao.UserMapper;
 import vip.ipav.shiro.pojo.RolePermission;
@@ -14,13 +11,15 @@ import vip.ipav.shiro.pojo.User;
 import vip.ipav.shiro.pojo.UserExample;
 import vip.ipav.shiro.pojo.UserRole;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
- * Created by 89003522 on 2018/1/9.
+ * Created by Doobo on 2018/1/31.
  */
-public class MyShiroRealm extends AuthorizingRealm {
-    private static final Logger logger = LoggerFactory.getLogger(MyShiroRealm.class);
+public class MyCasRealm extends CasRealm {
 
     @Autowired
     private UserMapper userMapper;
@@ -36,7 +35,7 @@ public class MyShiroRealm extends AuthorizingRealm {
                     .andUsernameEqualTo(username);
             List<User> list = userMapper.selectByExample(userExample);
             if(list.isEmpty()){
-               return null;
+                return null;
             }
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
             Set<String> roles = new HashSet<String>();
@@ -60,25 +59,6 @@ public class MyShiroRealm extends AuthorizingRealm {
                 info.addStringPermissions(perSet);
             }
             return info;
-        }
-        return null;
-    }
-
-    // 获取认证信息
-    protected AuthenticationInfo doGetAuthenticationInfo(
-            AuthenticationToken authcToken ) throws AuthenticationException {
-        UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        // 通过表单接收的用户名
-        if( token.getUsername() != null){
-            UserExample userExample = new UserExample();
-            userExample.createCriteria()
-                    .andUsernameEqualTo(token.getUsername());
-            List<User> list = userMapper.selectByExample(userExample);
-            if(!list.isEmpty()
-                    && new String(token.getPassword()).equals(list.get(0).getPassword())){
-                return new SimpleAuthenticationInfo(
-                        token.getUsername(),token.getPassword(),getName());
-            }
         }
         return null;
     }

@@ -36,5 +36,7 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:spring-properties/*.properties"/>
     <import resource="spring-shiro.xml"/>
 </beans>
